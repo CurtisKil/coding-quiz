@@ -28,9 +28,45 @@ body {
   padding: 4rem;
 }
 
+h1 {
+  padding-top: 30px;
+}
+
+p {
+  padding: 20px 0;
+}
+
+h1,
+p {
+  text-align: center;
+}
+
 h2 {
   padding: 1rem;
   text-align: center;
+}
+
+.high-scores-page {
+  padding-left: 15px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.high-scores-page a {
+  text-decoration: none;
+}
+
+.high-scores-page a:hover {
+  color: #5e3370;
+  text-decoration: underline;
+}
+
+.timer {
+  padding-right: 50px;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 ul {
@@ -48,7 +84,7 @@ ul li label {
 }
 
 button {
-  background-color: #8e44ad;
+  background-color: #44085e;
   color: #fff;
   border: none;
   display: block;
@@ -66,4 +102,8 @@ button:hover {
 button:focus {
   outline: none;
   background-color: #5e3370;
+}
+
+.hide {
+  display: none;
 }
