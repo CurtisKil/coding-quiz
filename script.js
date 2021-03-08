@@ -56,6 +56,9 @@ const p = document.querySelector("p");
 let currentQuiz = 0;
 let score = 0;
 
+const startingMinutes = 3;
+let time = startingMinutes * 60;
+
 function startGame() {
   startBtn.classList.add("hide");
   h1.classList.add("hide");
@@ -67,16 +70,13 @@ function startGame() {
 }
 
 function timeLeft() {
-  timeLeft = 5;
-  setInterval(function () {
-    if (timeLeft <= -1) {
-      clearInterval((timeLeft = 0));
-      // Put game over alert here then restart quiz
-      quizOver();
-    }
-    timeLeftDisplay.innerHTML = timeLeft;
-    timeLeft -= 1;
-  }, 1000);
+  const minutes = Math.floor(time / 60);
+  let seconds = time % 60;
+
+  seconds = seconds < 3 ? "0" + seconds : seconds;
+
+  timeLeftDisplay.innerHTML = `${minutes}:${seconds}`;
+  time--;
 }
 
 function quizOver() {
@@ -87,8 +87,7 @@ function quizOver() {
   quizHeader.classList.add("hide");
 }
 
-// loadQuiz();
-startBtn.addEventListener("click", startGame);
+startBtn.addEventListener("click", startGame, setInterval(timeLeft, 1000));
 
 function loadQuiz() {
   deselectAnswers();
