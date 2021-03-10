@@ -69,14 +69,21 @@ function startGame() {
   timeLeft();
 }
 
+startBtn.addEventListener("click", startGame);
+
 function timeLeft() {
   const minutes = Math.floor(time / 60);
   let seconds = time % 60;
 
   seconds = seconds < 3 ? "0" + seconds : seconds;
 
-  timeLeftDisplay.innerHTML = `${minutes}:${seconds}`;
-  time--;
+  setInterval(function () {
+    if (time <= 0) {
+      clearInterval((time = 0));
+    }
+    timeLeftDisplay.innerHTML = `${minutes}:${seconds}`;
+    time--;
+  }, 1000);
 }
 
 function quizOver() {
@@ -86,8 +93,6 @@ function quizOver() {
   submitBtn.classList.add("hide");
   quizHeader.classList.add("hide");
 }
-
-startBtn.addEventListener("click", startGame, setInterval(timeLeft, 1000));
 
 function loadQuiz() {
   deselectAnswers();
